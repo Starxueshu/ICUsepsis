@@ -4,7 +4,7 @@ import joblib as jl
 import pandas as pd
 import streamlit as st
 
-st.header("Prediction of sepsis among major trauma patients admitted to ICU using machine learning techniques: An externally validated cohort study in multicenter")
+st.header("Prediction of sepsis among major trauma patients admitted to ICU using machine learning techniques: An externally validated cohort study")
 st.sidebar.title("Parameters Selection Panel")
 st.sidebar.markdown("Picking up parameters")
 Gender = st.sidebar.selectbox("Gender", ("Male", "Female"))
