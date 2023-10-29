@@ -4,7 +4,7 @@ import joblib as jl
 import pandas as pd
 import streamlit as st
 
-st.header("Prediction of sepsis among major trauma patients admitted to ICU using machine learning techniques: An externally validated cohort study")
+st.header("Web-based artificial intelligence application for predicting sepsis among trauma patients: an international validated cohort study")
 st.sidebar.title("Parameters Selection Panel")
 st.sidebar.markdown("Picking up parameters")
 Gender = st.sidebar.selectbox("Gender", ("Male", "Female"))
@@ -31,14 +31,14 @@ if st.button("Submit"):
     # Get prediction
     prediction = rf_clf.predict_proba(x)[0, 1]
         # Output prediction
-    st.text(f"Probability of sepsis: {'{:.2%}'.format(round(prediction, 5))}")
+    st.success(f"Probability of sepsis: {'{:.2%}'.format(round(prediction, 5))}")
     if prediction < 0.254:
-        st.text(f"Risk group: low-risk group")
+        st.success(f"Risk group: low-risk group")
     else:
-        st.text(f"Risk group: High-risk group")
+        st.success(f"Risk group: High-risk group")
     if prediction < 0.254:
-        st.markdown(f"Routine infection prevention measures, such as hand hygiene, adequate disinfection of equipment, and isolation of patients with multidrug-resistant organisms, are essential in preventing the spread of infections in the ICU.")
+        st.markdown(f"Recommendation for the low-risk group: Routine infection prevention measures, such as hand hygiene, adequate disinfection of equipment, and isolation of patients with multidrug-resistant organisms, are essential in preventing the spread of infections in the ICU.")
     else:
-        st.markdown(f"Early prevention of sepsis development is crucial to improve patient outcomes. Current prevention strategies for trauma-related infection/sepsis include infection prevention through surgical management, prophylactic antibiotics, tetanus vaccination, and immunomodulatory interventions, as well as organ dysfunction prevention through pharmaceuticals, temporary intravascular shunts, lung-protective strategies, enteral immunonutrition, and acupuncture. In addition, timely administration of antibiotics, fluid resuscitation, and source control can improve outcomes and prevent the development of septic shock.")
+        st.markdown(f"Recommendation for the high-risk group: Early prevention of sepsis development is crucial to improve patient outcomes. Current prevention strategies for trauma-related infection/sepsis include infection prevention through surgical management, prophylactic antibiotics, tetanus vaccination, and immunomodulatory interventions, as well as organ dysfunction prevention through pharmaceuticals, temporary intravascular shunts, lung-protective strategies, enteral immunonutrition, and acupuncture. In addition, timely administration of antibiotics, fluid resuscitation, and source control can improve outcomes and prevent the development of septic shock.")
 st.subheader('Model information')
-st.markdown('The predictive model was constructed utilizing the advanced XGBoosting machine algorithm, yielding an impressive area under the curve (AUC) value of 0.912 (95%CI: 0.880-0.935). To further validate its robustness, the model underwent rigorous external validation, resulting in an AUC of 0.817 (95%CI: 0.783-0.861). This innovative online calculator, freely accessible and exclusively intended for research purposes, has been specifically designed to comprehensively assess the risk of sepsis in critically injured patients within intensive care units (ICUs). By leveraging cutting-edge machine learning techniques and the most up-to-date scientific literature, this tool empowers healthcare professionals to make more accurate and timely decisions, ultimately improving patient outcomes and reducing mortality rates.')
+st.markdown('This AI application, freely accessible and exclusively intended for research purposes, has been specifically designed to comprehensively assess the risk of sepsis in critically injured patients within intensive care units (ICUs). By leveraging machine learning techniques and the scientific literature, this tool may empower healthcare professionals to make more accurate and timely decisions, ultimately improving patient outcomes and reducing mortality rates.')
